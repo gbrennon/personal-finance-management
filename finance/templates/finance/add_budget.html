@@ -1,0 +1,15 @@
+{% extends 'finance/base.html' %}
+{% block content %}
+<div class="container mt-5">
+    <h2 class="text-center mb-4">📅 Set Monthly Budget</h2>
+
+    <div class="card shadow p-4">
+        <form method="post">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <button type="submit" class="btn btn-primary">Set Budget</button>
+            <a href="{% url 'dashboard' %}" class="btn btn-secondary">Cancel</a>
+        </form>
+    </div>
+</div>
+{% endblock %}
