@@ -28,7 +28,7 @@
                 <div class="card border-success shadow">
                     <div class="card-body">
                         <h5>Total Income</h5>
-                        <h4 class="text-success">₹{{ total_income }}</h4>
+                        <h4 class="text-success">{{ total_income }}-TRY</h4>
                     </div>
                 </div>
             </div>
@@ -36,7 +36,7 @@
                 <div class="card border-danger shadow">
                     <div class="card-body">
                         <h5>Total Expenses</h5>
-                        <h4 class="text-danger">₹{{ total_expense }}</h4>
+                        <h4 class="text-danger">{{ total_expense }}-TRY</h4>
                     </div>
                 </div>
             </div>
@@ -44,7 +44,7 @@
                 <div class="card border-primary shadow">
                     <div class="card-body">
                         <h5>Total Savings</h5>
-                        <h4 class="text-primary">₹{{ total_savings }}</h4>
+                        <h4 class="text-primary">{{ total_savings }}-TRY</h4>
                     </div>
                 </div>
             </div>
@@ -54,9 +54,9 @@
             <thead class="table-dark">
                 <tr>
                     <th>Month</th>
-                    <th>Income (₹)</th>
-                    <th>Expenses (₹)</th>
-                    <th>Savings (₹)</th>
+                    <th>Income (TRY)</th>
+                    <th>Expenses (TRY)</th>
+                    <th>Savings (TRY)</th>
                     <th>Budget</th>
                     <th>Action</th>
                 </tr>
@@ -70,7 +70,7 @@
                     <td>{{ data.savings }}</td>
                     <td>
                         {% if data.budget %}
-                            ₹{{ data.budget }}
+                            {{ data.budget }}-TRY
                             {% if data.over_budget %}
                                 <span class="text-danger" title="Over budget!">Over Budget</span>
                             {% endif %}    

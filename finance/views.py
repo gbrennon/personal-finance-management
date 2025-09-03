@@ -71,7 +71,8 @@ def dashboard(request):
 @login_required
 def add_income(request):
     if request.method == 'POST':
-        form = TransactionForm(request.POST, transaction_type='Income')
+        # Pass the current user to the form
+        form = TransactionForm(request.POST, user=request.user, transaction_type='Income')
         if form.is_valid():
             income = form.save(commit=False)
             income.user = request.user
@@ -79,30 +80,32 @@ def add_income(request):
             income.save()
             return redirect('dashboard')
     else:
-        form = TransactionForm(transaction_type ='Income')
+        # Also pass the current user when displaying the empty form
+        form = TransactionForm(user=request.user, transaction_type='Income')
     return render(request, 'finance/add_income.html', {'form': form})
     
+
+# finance/views.py
 
 @login_required
 def add_expense(request):
     if request.method == 'POST':
-        form = TransactionForm(request.POST, transaction_type='Expense')
+        # Pass the user to the form to correctly filter categories
+        form = TransactionForm(request.POST, user=request.user, transaction_type='Expense')
         if form.is_valid():
             expense = form.save(commit=False)
             expense.user = request.user
             expense.transaction_type = 'Expense'
-            expense.date = expense.date or timezone.now()
-            today = timezone.now()
+            # Ensure date is set before saving and using it
+            if not expense.date:
+                expense.date = timezone.now().date()
+            
+            # Save the expense first to include it in the monthly total
+            expense.save() 
+            
             month = expense.date.month
             year = expense.date.year
 
-            monthly_expense = Transaction.objects.filter(
-                user=request.user,
-                transaction_type='Expense',
-                date__month=month,
-                date__year=year
-            ).aggregate(total=Sum('amount'))['total'] or 0
-            
             # Budget Check
             budget = Budget.objects.filter(
                 user=request.user,
@@ -110,43 +113,70 @@ def add_expense(request):
                 year=year
             ).first()
 
-            total_after_adding = monthly_expense + expense.amount
+            # Only perform the budget check if a budget is set for that month
+            if budget and budget.amount is not None:
+                monthly_expense = Transaction.objects.filter(
+                    user=request.user,
+                    transaction_type='Expense',
+                    date__month=month,
+                    date__year=year
+                ).aggregate(total=Sum('amount'))['total'] or 0
 
-
-            if total_after_adding > budget.amount:
-                messages.warning(
-                    request, 
-                    f'⚠️ Alert: Adding this will exceed your monthly budget of ₹{budget.amount}.'
-                )
-
+                if monthly_expense > budget.amount:
+                    messages.warning(
+                        request, 
+                        f'⚠️ Alert: You have now exceeded your monthly budget of {budget.amount}.'
+                    )
             
             messages.success(request, "✅ Expense added successfully.")
-            expense.save()
-
             return redirect('dashboard')
-
     else:
-        form = TransactionForm(transaction_type='Expense')
+        # Also pass the user when displaying the empty form
+        form = TransactionForm(user=request.user, transaction_type='Expense')
+        
     return render(request, 'finance/add_expense.html', {'form': form})
+
 
     
 @login_required
 def edit_transaction(request, transaction_id):
     transaction = get_object_or_404(Transaction, id=transaction_id, user=request.user)
+    
     if request.method == 'POST':
-        form = TransactionForm(request.POST, instance=transaction)
+        # Pass the user and transaction type to the form
+        form = TransactionForm(
+            request.POST, 
+            instance=transaction, 
+            user=request.user, 
+            transaction_type=transaction.transaction_type
+        )
         if form.is_valid():
             form.save()
             return redirect('dashboard')
     else:
-        form = TransactionForm(instance=transaction)
-    return render(request, 'finance/edit_transaction.html', {'form': form})
+        # Also pass the user and transaction type when displaying the form
+        form = TransactionForm(
+            instance=transaction, 
+            user=request.user, 
+            transaction_type=transaction.transaction_type
+        )
+        
+    return render(request, 'finance/edit_transaction.html', {'form': form, 'transaction': transaction})
+
 
 @login_required
 def delete_transaction(request, transaction_id):
     transaction = get_object_or_404(Transaction, id=transaction_id, user=request.user)
-    transaction.delete()
-    return redirect('dashboard')
+    
+    if request.method == 'POST':
+        # If the user confirms the deletion via the form, then delete
+        transaction.delete()
+        messages.success(request, "Transaction deleted successfully.")
+        return redirect('dashboard')
+        
+    # If it's a GET request, show a confirmation page
+    return render(request, 'finance/delete_confirm.html', {'transaction': transaction})
+
 
 def forecast(request):
     user = request.user

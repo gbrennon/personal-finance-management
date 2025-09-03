@@ -10,7 +10,7 @@
     <div class="card bg-success text-white shadow-sm">
       <div class="card-body">
         <h5>Total Income</h5>
-        <h4>₹{{ total_income }}</h4>
+        <h4>{{ total_income }}-TRY</h4>
       </div>
     </div>
   </div>
@@ -18,7 +18,7 @@
     <div class="card bg-danger text-white shadow-sm">
       <div class="card-body">
         <h5>Total Expenses</h5>
-        <h4>₹{{ total_expense }}</h4>
+        <h4>{{ total_expense }}-TRY</h4>
       </div>
     </div>
   </div>
@@ -26,7 +26,7 @@
     <div class="card bg-primary text-white shadow-sm">
       <div class="card-body">
         <h5>Savings</h5>
-        <h4>₹{{ total_savings }}</h4>
+        <h4>{{ total_savings }}-TRY</h4>
       </div>
     </div>
   </div>
@@ -61,7 +61,7 @@
             <td>{{ t.date }}</td>
             <td>{{ t.transaction_type }}</td>
             <td>{{ t.category }}</td>
-            <td>₹{{ t.amount }}</td>
+            <td>{{ t.amount }}-TRY</td>
             <td>
                 <a href="{% url 'edit_transaction' t.id %}" class="btn btn-sm btn-primary">Edit</a>
                 <a href="{% url 'delete_transaction' t.id %}" class="btn btn-sm btn-danger"

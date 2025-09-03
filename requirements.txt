@@ -1,0 +1,8 @@
+# requirements.txt
+Django~=5.2
+django-extensions
+gunicorn
+pandas
+scikit-learn
+matplotlib
+numpy

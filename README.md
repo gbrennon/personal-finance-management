@@ -10,6 +10,7 @@ FinanceApp is a Django-based web application that allows users to track their in
 * ✅ **User Authentication** (Register, Login, Logout)
 * ✅ **Add Income and Expenses**
 * ✅ **Dashboard** with Total Income, Expense, and Savings
+* ✅ **Dynamic Income/Expense Categories** Can be added/removed/edited on admin panel 
 * ✅ **Expense Forecasting** using Linear Regression
 * ✅ **Monthly & Yearly Reports**
 * ✅ **Set Monthly Budgets** per user
@@ -34,45 +35,31 @@ FinanceApp is a Django-based web application that allows users to track their in
 1. **Clone the Repository**
 
    ```bash
-   git clone https://github.com/yourusername/financeapp.git
-   cd financeapp
+   git clone https://github.com/GGurol/personal-finance-management.git
+   cd personal-finance-management
    ```
 
-2. **Create and Activate Virtual Environment**
+2. **Create and Build Docker Environment**
 
    ```bash
-   python -m venv venv
-   venv\Scripts\activate  # Windows
-   source venv/bin/activate  # macOS/Linux
+   docker compose up --build -d
    ```
 
-3. **Install Dependencies**
+3. **Apply Migrations**
 
    ```bash
-   pip install -r requirements.txt
+   docker compose exec web python manage.py makemigrations
+   docker compose exec web python manage.py migrate
    ```
 
-4. **Apply Migrations**
+4. **Create Superuser**
 
    ```bash
-   python manage.py makemigrations
-   python manage.py migrate
+   docker compose exec web python manage.py createsuperuser
    ```
 
-5. **Create Superuser**
-
-   ```bash
-   python manage.py createsuperuser
-   ```
-
-6. **Run the Server**
-
-   ```bash
-   python manage.py runserver
-   ```
-
-7. Open your browser and go to:
-   **[http://127.0.0.1:8000/](http://127.0.0.1:8000/)**
+5. Open your browser and go to:
+   **[http://localhost:8000/](http://localhost:8000/)**
 
 ---
 
@@ -100,7 +87,7 @@ FinanceApp is a Django-based web application that allows users to track their in
 ### ✅ Sample Admin Login
 
 > Use after running `createsuperuser`
-> URL: `http://127.0.0.1:8000/admin`
+> URL: `http://localhost:8000/admin`
 
 ---
 
@@ -121,14 +108,16 @@ financeapp/
 
 ---
 
-### 📦 Requirements (sample `requirements.txt`)
+### 📦 Requirements (`requirements.txt`)
 
 ```txt
-Django>=4.2
+Django~=5.2
+django-extensions
+gunicorn
 pandas
-numpy
 scikit-learn
 matplotlib
+numpy
 ```
 
 

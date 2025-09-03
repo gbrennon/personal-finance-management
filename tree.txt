@@ -1,0 +1,71 @@
+.
+├── db.sqlite3
+├── docker-compose.yml
+├── Dockerfile
+├── finance
+│   ├── admin.py
+│   ├── apps.py
+│   ├── forms.py
+│   ├── __init__.py
+│   ├── migrations
+│   │   ├── 0001_initial.py
+│   │   ├── 0002_budget_year.py
+│   │   ├── 0003_transaction_transaction_type_and_more.py
+│   │   ├── 0004_alter_budget_amount_alter_budget_month_and_more.py
+│   │   ├── 0005_alter_budget_amount.py
+│   │   ├── 0006_alter_budget_unique_together_remove_budget_category.py
+│   │   ├── 0007_expensecategory_incomecategory_and_more.py
+│   │   ├── __init__.py
+│   │   └── __pycache__
+│   │       ├── 0001_initial.cpython-38.pyc
+│   │       ├── 0002_budget_year.cpython-38.pyc
+│   │       ├── 0003_transaction_transaction_type_and_more.cpython-38.pyc
+│   │       ├── 0004_alter_budget_amount_alter_budget_month_and_more.cpython-38.pyc
+│   │       ├── 0005_alter_budget_amount.cpython-38.pyc
+│   │       ├── 0006_alter_budget_unique_together_remove_budget_category.cpython-38.pyc
+│   │       └── __init__.cpython-38.pyc
+│   ├── models.py
+│   ├── __pycache__
+│   │   ├── admin.cpython-38.pyc
+│   │   ├── apps.cpython-38.pyc
+│   │   ├── forms.cpython-38.pyc
+│   │   ├── __init__.cpython-38.pyc
+│   │   ├── models.cpython-38.pyc
+│   │   ├── tests.cpython-38.pyc
+│   │   ├── urls.cpython-38.pyc
+│   │   └── views.cpython-38.pyc
+│   ├── templates
+│   │   └── finance
+│   │       ├── add_budget.html
+│   │       ├── add_expense.html
+│   │       ├── add_income.html
+│   │       ├── base.html
+│   │       ├── dashboard.html
+│   │       ├── edit_budget.html
+│   │       ├── edit_transaction.html
+│   │       ├── forecast.html
+│   │       ├── home.html
+│   │       ├── login.html
+│   │       ├── register.html
+│   │       └── report.html
+│   ├── tests.py
+│   ├── urls.py
+│   └── views.py
+├── financeapp
+│   ├── asgi.py
+│   ├── __init__.py
+│   ├── __pycache__
+│   │   ├── __init__.cpython-38.pyc
+│   │   ├── settings.cpython-38.pyc
+│   │   ├── urls.cpython-38.pyc
+│   │   └── wsgi.cpython-38.pyc
+│   ├── settings.py
+│   ├── urls.py
+│   └── wsgi.py
+├── FinanceApp_Readme_With_Screenshots.pdf
+├── manage.py
+├── README.md
+├── requirements.txt
+└── tree.txt
+
+9 directories, 60 files
