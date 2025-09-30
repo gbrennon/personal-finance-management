@@ -35,9 +35,8 @@ FinanceApp is a Django-based web application that allows users to track their in
 1. **Clone the Repository, Delete db file**
 
    ```bash
-   git clone https://github.com/GGurol/personal-finance-management.git
+   git clone https://github.com/gbrennon/personal-finance-management.git
    cd personal-finance-management
-   sudo rm db.sqlite3
    ```
 
 2. **Create and Build Docker Environment**
