@@ -1,15 +1,96 @@
 # docker-compose.yml
+version: '3.8'
+
 services:
+  # Zookeeper service for Kafka
+  zookeeper:
+    image: confluentinc/cp-zookeeper:7.4.0
+    hostname: zookeeper
+    container_name: zookeeper
+    ports:
+      - "2181:2181"
+    environment:
+      ZOOKEEPER_CLIENT_PORT: 2181
+      ZOOKEEPER_TICK_TIME: 2000
+
+  # Kafka service
+  kafka:
+    image: confluentinc/cp-kafka:7.4.0
+    hostname: kafka
+    container_name: kafka
+    depends_on:
+      - zookeeper
+    ports:
+      - "9092:9092"
+      - "9101:9101"
+    environment:
+      KAFKA_BROKER_ID: 1
+      KAFKA_ZOOKEEPER_CONNECT: 'zookeeper:2181'
+      KAFKA_LISTENER_SECURITY_PROTOCOL_MAP: PLAINTEXT:PLAINTEXT,PLAINTEXT_HOST:PLAINTEXT
+      KAFKA_ADVERTISED_LISTENERS: PLAINTEXT://kafka:29092,PLAINTEXT_HOST://localhost:9092
+      KAFKA_OFFSETS_TOPIC_REPLICATION_FACTOR: 1
+      KAFKA_TRANSACTION_STATE_LOG_MIN_ISR: 1
+      KAFKA_TRANSACTION_STATE_LOG_REPLICATION_FACTOR: 1
+      KAFKA_GROUP_INITIAL_REBALANCE_DELAY_MS: 0
+      KAFKA_JMX_PORT: 9101
+      KAFKA_JMX_HOSTNAME: localhost
+
+  # PostgreSQL database
+  db:
+    image: postgres:15
+    container_name: finance_db
+    environment:
+      POSTGRES_DB: finance_db
+      POSTGRES_USER: finance_user
+      POSTGRES_PASSWORD: finance_password
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    ports:
+      - "5432:5432"
+
+  # Main Django application
   web:
-    # Build the image from the Dockerfile in the current directory
     build: .
-    # Name the container for easy identification
     container_name: personal_finance_app
-    # The command to run when the container starts for development
     command: python manage.py runserver 0.0.0.0:8000
-    # Mount the current directory into the container's /app directory for live code changes
     volumes:
       - .:/app
-    # Map port 8000 on the host to port 8000 in the container
     ports:
       - "8000:8000"
+    depends_on:
+      - db
+      - kafka
+    environment:
+      - DATABASE_URL=postgresql://finance_user:finance_password@db:5432/finance_db
+      - KAFKA_BOOTSTRAP_SERVERS=kafka:29092
+
+  # Notifications service
+  notifications:
+    build: .
+    container_name: notifications_service
+    command: python manage.py run_notifications_consumer
+    volumes:
+      - .:/app
+    depends_on:
+      - db
+      - kafka
+    environment:
+      - DATABASE_URL=postgresql://finance_user:finance_password@db:5432/finance_db
+      - KAFKA_BOOTSTRAP_SERVERS=kafka:29092
+
+  # Reporting service
+  reporting:
+    build: .
+    container_name: reporting_service
+    command: python manage.py run_reporting_consumer
+    volumes:
+      - .:/app
+    depends_on:
+      - db
+      - kafka
+    environment:
+      - DATABASE_URL=postgresql://finance_user:finance_password@db:5432/finance_db
+      - KAFKA_BOOTSTRAP_SERVERS=kafka:29092
+
+volumes:
+  postgres_data:

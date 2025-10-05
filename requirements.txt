@@ -6,3 +6,8 @@ pandas
 scikit-learn
 matplotlib
 numpy
+kafka-python
+confluent-kafka
+dataclasses-json
+psycopg2-binary
+dj-database-url
