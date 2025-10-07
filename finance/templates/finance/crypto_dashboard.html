@@ -1,0 +1,240 @@
+{% extends 'finance/base_service.html' %}
+
+{% block title %}Crypto Portfolio - Finance App{% endblock %}
+
+{% block content %}
+<div class="row">
+    <div class="col-md-12">
+        <h1 class="mb-4">
+            <i class="bi bi-currency-bitcoin"></i> Cryptocurrency Portfolio
+        </h1>
+    </div>
+</div>
+
+<!-- Portfolio Summary -->
+<div class="row mb-4">
+    <div class="col-md-3">
+        <div class="card text-white bg-primary">
+            <div class="card-body">
+                <div class="d-flex justify-content-between">
+                    <div>
+                        <h6 class="card-title">Total Invested</h6>
+                        <h4>${{ summary.total_invested|floatformat:2 }}</h4>
+                    </div>
+                    <div class="align-self-center">
+                        <i class="bi bi-wallet2 fs-1"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-3">
+        <div class="card text-white bg-info">
+            <div class="card-body">
+                <div class="d-flex justify-content-between">
+                    <div>
+                        <h6 class="card-title">Current Value</h6>
+                        <h4>${{ summary.current_value|floatformat:2 }}</h4>
+                    </div>
+                    <div class="align-self-center">
+                        <i class="bi bi-graph-up fs-1"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-3">
+        <div class="card text-white {% if summary.total_profit_loss >= 0 %}bg-success{% else %}bg-danger{% endif %}">
+            <div class="card-body">
+                <div class="d-flex justify-content-between">
+                    <div>
+                        <h6 class="card-title">Profit/Loss</h6>
+                        <h4>
+                            {% if summary.total_profit_loss >= 0 %}+{% endif %}${{
+                            summary.total_profit_loss|floatformat:2 }}
+                        </h4>
+                    </div>
+                    <div class="align-self-center">
+                        {% if summary.total_profit_loss >= 0 %}
+                        <i class="bi bi-arrow-up-circle fs-1"></i>
+                        {% else %}
+                        <i class="bi bi-arrow-down-circle fs-1"></i>
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-3">
+        <div class="card">
+            <div class="card-body text-center">
+                <a href="{% url 'add_crypto_investment' %}" class="btn btn-warning w-100">
+                    <i class="bi bi-plus-circle"></i><br>Add Investment
+                </a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Crypto Investments -->
+<div class="row">
+    <div class="col-md-12">
+        <div class="card">
+            <div class="card-header d-flex justify-content-between align-items-center">
+                <h5><i class="bi bi-list-ul"></i> Your Investments</h5>
+                <a href="{% url 'add_crypto_investment' %}" class="btn btn-warning btn-sm">
+                    <i class="bi bi-plus-circle"></i> Add Investment
+                </a>
+            </div>
+            <div class="card-body">
+                {% if investments %}
+                <div class="table-responsive">
+                    <table class="table table-striped">
+                        <thead>
+                            <tr>
+                                <th>Crypto</th>
+                                <th>Quantity</th>
+                                <th>Purchase Price</th>
+                                <th>Current Price</th>
+                                <th>Invested</th>
+                                <th>Current Value</th>
+                                <th>Profit/Loss</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for investment in investments %}
+                            <tr>
+                                <td>
+                                    <strong>
+                                        {% if investment.crypto_type.value == 'BTC' %}
+                                        <i class="bi bi-currency-bitcoin text-warning"></i> Bitcoin
+                                        {% else %}
+                                        <i class="bi bi-currency-exchange text-primary"></i> Ethereum
+                                        {% endif %}
+                                    </strong>
+                                </td>
+                                <td>{{ investment.quantity|floatformat:8 }}</td>
+                                <td>${{ investment.purchase_price|floatformat:2 }}</td>
+                                <td>
+                                    {% if investment.current_price %}
+                                    ${{ investment.current_price|floatformat:2 }}
+                                    {% else %}
+                                    <span class="text-muted">Not set</span>
+                                    {% endif %}
+                                </td>
+                                <td>${{ investment.amount_invested|floatformat:2 }}</td>
+                                <td>
+                                    {% if investment.current_value %}
+                                    ${{ investment.current_value|floatformat:2 }}
+                                    {% else %}
+                                    <span class="text-muted">-</span>
+                                    {% endif %}
+                                </td>
+                                <td>
+                                    {% if investment.profit_loss %}
+                                    {% if investment.profit_loss >= 0 %}
+                                    <span class="text-success">
+                                        +${{ investment.profit_loss|floatformat:2 }}
+                                    </span>
+                                    {% else %}
+                                    <span class="text-danger">
+                                        ${{ investment.profit_loss|floatformat:2 }}
+                                    </span>
+                                    {% endif %}
+                                    {% else %}
+                                    <span class="text-muted">-</span>
+                                    {% endif %}
+                                </td>
+                                <td>
+                                    <div class="btn-group btn-group-sm">
+                                        <button class="btn btn-outline-primary btn-sm"
+                                            onclick="updatePrice({{ investment.id }})" title="Update Price">
+                                            <i class="bi bi-arrow-clockwise"></i>
+                                        </button>
+                                        <button class="btn btn-outline-danger btn-sm"
+                                            onclick="sellInvestment({{ investment.id }})" title="Sell">
+                                            <i class="bi bi-cash"></i>
+                                        </button>
+                                    </div>
+                                </td>
+                            </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+                {% else %}
+                <div class="text-center py-4">
+                    <i class="bi bi-currency-bitcoin fs-1 text-muted"></i>
+                    <p class="text-muted mt-2">No crypto investments yet. Start building your portfolio!</p>
+                    <a href="{% url 'add_crypto_investment' %}" class="btn btn-warning">
+                        <i class="bi bi-plus-circle"></i> Add Your First Investment
+                    </a>
+                </div>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block extra_js %}
+<script>
+    function updatePrice(investmentId) {
+        const newPrice = prompt("Enter the current price:");
+        if (newPrice && !isNaN(newPrice) && parseFloat(newPrice) > 0) {
+            fetch(`/service/crypto/update-price/${investmentId}/`, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'X-CSRFToken': document.querySelector('[name=csrfmiddlewaretoken]').value
+                },
+                body: JSON.stringify({
+                    current_price: parseFloat(newPrice)
+                })
+            })
+                .then(response => response.json())
+                .then(data => {
+                    if (data.success) {
+                        location.reload();
+                    } else {
+                        alert('Error updating price: ' + data.error);
+                    }
+                })
+                .catch(error => {
+                    alert('Error updating price: ' + error);
+                });
+        }
+    }
+
+    function sellInvestment(investmentId) {
+        const sellPrice = prompt("Enter the sell price:");
+        if (sellPrice && !isNaN(sellPrice) && parseFloat(sellPrice) > 0) {
+            if (confirm("Are you sure you want to sell this investment?")) {
+                fetch(`/service/crypto/sell/${investmentId}/`, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'X-CSRFToken': document.querySelector('[name=csrfmiddlewaretoken]').value
+                    },
+                    body: JSON.stringify({
+                        sell_price: parseFloat(sellPrice)
+                    })
+                })
+                    .then(response => response.json())
+                    .then(data => {
+                        if (data.success) {
+                            alert(`Investment sold successfully!\nSale Value: $${data.sale_value}\nProfit/Loss: $${data.profit_loss}`);
+                            location.reload();
+                        } else {
+                            alert('Error selling investment: ' + data.error);
+                        }
+                    })
+                    .catch(error => {
+                        alert('Error selling investment: ' + error);
+                    });
+            }
+        }
+    }
+</script>
+{% endblock %}

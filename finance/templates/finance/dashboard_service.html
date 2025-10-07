@@ -1,0 +1,167 @@
+{% extends 'finance/base_service.html' %}
+
+{% block title %}Dashboard - Finance App{% endblock %}
+
+{% block content %}
+<div class="row">
+    <div class="col-md-12">
+        <h1 class="mb-4">
+            <i class="bi bi-speedometer2"></i> Financial Dashboard
+        </h1>
+    </div>
+</div>
+
+<!-- Summary Cards -->
+<div class="row mb-4">
+    <div class="col-md-4">
+        <div class="card text-white bg-success">
+            <div class="card-body">
+                <div class="d-flex justify-content-between">
+                    <div>
+                        <h5 class="card-title">Total Income</h5>
+                        <h3>${{ total_income|floatformat:2 }}</h3>
+                    </div>
+                    <div class="align-self-center">
+                        <i class="bi bi-arrow-up-circle fs-1"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-4">
+        <div class="card text-white bg-danger">
+            <div class="card-body">
+                <div class="d-flex justify-content-between">
+                    <div>
+                        <h5 class="card-title">Total Expenses</h5>
+                        <h3>${{ total_expense|floatformat:2 }}</h3>
+                    </div>
+                    <div class="align-self-center">
+                        <i class="bi bi-arrow-down-circle fs-1"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-4">
+        <div class="card text-white bg-info">
+            <div class="card-body">
+                <div class="d-flex justify-content-between">
+                    <div>
+                        <h5 class="card-title">Net Savings</h5>
+                        <h3>${{ total_savings|floatformat:2 }}</h3>
+                    </div>
+                    <div class="align-self-center">
+                        <i class="bi bi-piggy-bank fs-1"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Quick Actions -->
+<div class="row mb-4">
+    <div class="col-md-12">
+        <div class="card">
+            <div class="card-header">
+                <h5><i class="bi bi-lightning"></i> Quick Actions</h5>
+            </div>
+            <div class="card-body">
+                <div class="row">
+                    <div class="col-md-2">
+                        <a href="{% url 'add_income_service' %}" class="btn btn-success w-100 mb-2">
+                            <i class="bi bi-plus-circle"></i><br>Add Income
+                        </a>
+                    </div>
+                    <div class="col-md-2">
+                        <a href="{% url 'add_expense_service' %}" class="btn btn-danger w-100 mb-2">
+                            <i class="bi bi-dash-circle"></i><br>Add Expense
+                        </a>
+                    </div>
+                    <div class="col-md-2">
+                        <a href="{% url 'retirement_dashboard' %}" class="btn btn-primary w-100 mb-2">
+                            <i class="bi bi-piggy-bank"></i><br>Retirement
+                        </a>
+                    </div>
+                    <div class="col-md-2">
+                        <a href="{% url 'crypto_dashboard' %}" class="btn btn-warning w-100 mb-2">
+                            <i class="bi bi-currency-bitcoin"></i><br>Crypto
+                        </a>
+                    </div>
+                    <div class="col-md-2">
+                        <a href="{% url 'report' %}" class="btn btn-info w-100 mb-2">
+                            <i class="bi bi-bar-chart"></i><br>Reports
+                        </a>
+                    </div>
+                    <div class="col-md-2">
+                        <a href="{% url 'forecast' %}" class="btn btn-secondary w-100 mb-2">
+                            <i class="bi bi-graph-up"></i><br>Forecast
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Recent Transactions -->
+<div class="row">
+    <div class="col-md-12">
+        <div class="card">
+            <div class="card-header">
+                <h5><i class="bi bi-clock-history"></i> Recent Transactions</h5>
+            </div>
+            <div class="card-body">
+                {% if transactions %}
+                <div class="table-responsive">
+                    <table class="table table-striped">
+                        <thead>
+                            <tr>
+                                <th>Date</th>
+                                <th>Type</th>
+                                <th>Category</th>
+                                <th>Amount</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for transaction in transactions|slice:":10" %}
+                            <tr>
+                                <td>{{ transaction.date }}</td>
+                                <td>
+                                    {% if transaction.transaction_type.value == 'Income' %}
+                                    <span class="badge bg-success">
+                                        <i class="bi bi-arrow-up"></i> Income
+                                    </span>
+                                    {% else %}
+                                    <span class="badge bg-danger">
+                                        <i class="bi bi-arrow-down"></i> Expense
+                                    </span>
+                                    {% endif %}
+                                </td>
+                                <td>Category #{{ transaction.category_id }}</td>
+                                <td>
+                                    {% if transaction.transaction_type.value == 'Income' %}
+                                    <span class="text-success">+${{ transaction.amount|floatformat:2 }}</span>
+                                    {% else %}
+                                    <span class="text-danger">-${{ transaction.amount|floatformat:2 }}</span>
+                                    {% endif %}
+                                </td>
+                            </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+                {% else %}
+                <div class="text-center py-4">
+                    <i class="bi bi-inbox fs-1 text-muted"></i>
+                    <p class="text-muted mt-2">No transactions yet. Start by adding your first income or expense!</p>
+                    <a href="{% url 'add_income_service' %}" class="btn btn-success me-2">Add Income</a>
+                    <a href="{% url 'add_expense_service' %}" class="btn btn-danger">Add Expense</a>
+                </div>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

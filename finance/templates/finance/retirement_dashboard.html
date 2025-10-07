@@ -1,0 +1,126 @@
+{% extends 'finance/base_service.html' %}
+
+{% block title %}Retirement Planning - Finance App{% endblock %}
+
+{% block content %}
+<div class="row">
+    <div class="col-md-12">
+        <h1 class="mb-4">
+            <i class="bi bi-piggy-bank"></i> Retirement Planning
+        </h1>
+    </div>
+</div>
+
+<!-- Retirement Goals -->
+<div class="row mb-4">
+    <div class="col-md-12">
+        <div class="card">
+            <div class="card-header d-flex justify-content-between align-items-center">
+                <h5><i class="bi bi-target"></i> Retirement Goals</h5>
+                <a href="{% url 'create_retirement_goal' %}" class="btn btn-primary btn-sm">
+                    <i class="bi bi-plus-circle"></i> Create Goal
+                </a>
+            </div>
+            <div class="card-body">
+                {% if goals %}
+                {% for goal in goals %}
+                <div class="card mb-3">
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-md-8">
+                                <h6 class="card-title">Retirement Goal</h6>
+                                <p class="card-text">
+                                    <strong>Target:</strong> ${{ goal.target_amount|floatformat:2 }}<br>
+                                    <strong>Target Date:</strong> {{ goal.target_date }}<br>
+                                    <strong>Monthly Contribution:</strong> ${{ goal.monthly_contribution|floatformat:2
+                                    }}
+                                </p>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="text-end">
+                                    <h6>Progress</h6>
+                                    <div class="progress mb-2">
+                                        {% with progress=goal.current_amount|floatformat:0|add:0
+                                        target=goal.target_amount|floatformat:0|add:0 %}
+                                        {% with percentage=progress|div:target|mul:100 %}
+                                        <div class="progress-bar" role="progressbar"
+                                            style="width: {{ percentage|floatformat:1 }}%"
+                                            aria-valuenow="{{ percentage|floatformat:1 }}" aria-valuemin="0"
+                                            aria-valuemax="100">
+                                            {{ percentage|floatformat:1 }}%
+                                        </div>
+                                        {% endwith %}
+                                        {% endwith %}
+                                    </div>
+                                    <small class="text-muted">
+                                        ${{ goal.current_amount|floatformat:2 }} of ${{ goal.target_amount|floatformat:2
+                                        }}
+                                    </small>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                {% endfor %}
+                {% else %}
+                <div class="text-center py-4">
+                    <i class="bi bi-target fs-1 text-muted"></i>
+                    <p class="text-muted mt-2">No retirement goals set yet. Start planning for your future!</p>
+                    <a href="{% url 'create_retirement_goal' %}" class="btn btn-primary">
+                        <i class="bi bi-plus-circle"></i> Create Your First Goal
+                    </a>
+                </div>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Recent Contributions -->
+<div class="row">
+    <div class="col-md-12">
+        <div class="card">
+            <div class="card-header d-flex justify-content-between align-items-center">
+                <h5><i class="bi bi-plus-square"></i> Recent Contributions</h5>
+                <a href="{% url 'add_retirement_contribution' %}" class="btn btn-success btn-sm">
+                    <i class="bi bi-plus-circle"></i> Add Contribution
+                </a>
+            </div>
+            <div class="card-body">
+                {% if contributions %}
+                <div class="table-responsive">
+                    <table class="table table-striped">
+                        <thead>
+                            <tr>
+                                <th>Date</th>
+                                <th>Amount</th>
+                                <th>Description</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for contribution in contributions %}
+                            <tr>
+                                <td>{{ contribution.contribution_date }}</td>
+                                <td class="text-success">
+                                    <strong>+${{ contribution.amount|floatformat:2 }}</strong>
+                                </td>
+                                <td>{{ contribution.description|default:"Retirement contribution" }}</td>
+                            </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+                {% else %}
+                <div class="text-center py-4">
+                    <i class="bi bi-plus-square fs-1 text-muted"></i>
+                    <p class="text-muted mt-2">No contributions recorded yet.</p>
+                    <a href="{% url 'add_retirement_contribution' %}" class="btn btn-success">
+                        <i class="bi bi-plus-circle"></i> Add Your First Contribution
+                    </a>
+                </div>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
