@@ -7,6 +7,12 @@ FROM python:3.12-slim
 ENV PYTHONDONTWRITEBYTECODE 1
 ENV PYTHONUNBUFFERED 1
 
+# Create a non-root user to run the application
+RUN adduser -D -u 1000 appuser
+
+# Switch to that user
+USER appuser
+
 # Set the working directory in the container
 WORKDIR /app
 
