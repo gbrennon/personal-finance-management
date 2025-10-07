@@ -1,0 +1,103 @@
+version: '3.8'
+
+services:
+  # Database
+  postgres:
+    image: postgres:15
+    environment:
+      POSTGRES_DB: finance_db
+      POSTGRES_USER: finance_user
+      POSTGRES_PASSWORD: finance_password
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    ports:
+      - "5433:5432"
+    networks:
+      - finance_network
+
+  # Redis for messaging
+  redis:
+    image: redis:7-alpine
+    ports:
+      - "6379:6379"
+    networks:
+      - finance_network
+
+  # Finance Service
+  finance-service:
+    build: ./services/finance-service
+    container_name: finance_service
+    ports:
+      - "8001:8001"
+    environment:
+      - DATABASE_URL=postgresql://finance_user:finance_password@postgres:5432/finance_db
+      - REDIS_URL=redis://redis:6379/0
+      - DEBUG=True
+    depends_on:
+      - postgres
+      - redis
+    volumes:
+      - ./services/finance-service:/app
+    networks:
+      - finance_network
+
+  # Retirement Service
+  retirement-service:
+    build: ./services/retirement-service
+    container_name: retirement_service
+    ports:
+      - "8002:8002"
+    environment:
+      - DATABASE_URL=postgresql://finance_user:finance_password@postgres:5432/finance_db
+      - REDIS_URL=redis://redis:6379/0
+      - DEBUG=True
+    depends_on:
+      - postgres
+      - redis
+    volumes:
+      - ./services/retirement-service:/app
+    networks:
+      - finance_network
+
+  # Backend for Frontend (FastAPI)
+  backend-for-frontend:
+    build: ./services/backend-for-frontend
+    container_name: backend_for_frontend
+    ports:
+      - "8003:8003"
+    environment:
+      - FINANCE_SERVICE_URL=http://finance-service:8001
+      - RETIREMENT_SERVICE_URL=http://retirement-service:8002
+      - REDIS_URL=redis://redis:6379/0
+    depends_on:
+      - finance-service
+      - retirement-service
+      - redis
+    volumes:
+      - ./services/backend-for-frontend:/app
+    networks:
+      - finance_network
+
+  # Frontend (Angular)
+  frontend:
+    build: ./services/frontend
+    container_name: frontend
+    ports:
+      - "4200:4200"
+    environment:
+      - API_URL=http://localhost:8003
+    depends_on:
+      - backend-for-frontend
+    volumes:
+      - ./services/frontend:/app
+      - /app/node_modules
+    networks:
+      - finance_network
+
+volumes:
+  postgres_data:
+
+
+networks:
+  finance_network:
+    driver: bridge
