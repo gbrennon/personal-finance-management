@@ -1,0 +1,162 @@
+{% extends 'finance/base.html' %}
+
+{% block title %}Retirement Dashboard{% endblock %}
+
+{% block content %}
+<div class="row">
+    <div class="col-12">
+        <h2>Retirement Dashboard</h2>
+    </div>
+</div>
+
+<div class="row mb-4">
+    <div class="col-md-4">
+        <div class="card bg-primary text-white">
+            <div class="card-body">
+                <h5 class="card-title">Total Balance</h5>
+                <h3>${{ total_balance|floatformat:2 }}</h3>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-4">
+        <div class="card bg-info text-white">
+            <div class="card-body">
+                <h5 class="card-title">Retirement Goal</h5>
+                <h3>{% if retirement_goal %} ${{ retirement_goal.target_retirement_amount|floatformat:2 }}{% else %}Not
+                    Set{% endif %}</h3>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-4">
+        <div class="card bg-warning text-white">
+            <div class="card-body">
+                <h5 class="card-title">Progress</h5>
+                <h3>{% if retirement_goal %}{{ retirement_goal.retirement_readiness_percentage|floatformat:1 }}%{% else
+                    %}0%{% endif %}</h3>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-md-8">
+        <div class="card">
+            <div class="card-header d-flex justify-content-between align-items-center">
+                <h5>Retirement Accounts</h5>
+                <a href="{% url 'retirement:add_account' %}" class="btn btn-primary btn-sm">Add Account</a>
+            </div>
+            <div class="card-body">
+                {% if accounts %}
+                <div class="table-responsive">
+                    <table class="table table-striped">
+                        <thead>
+                            <tr>
+                                <th>Account Name</th>
+                                <th>Type</th>
+                                <th>Provider</th>
+                                <th>Balance</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for account in accounts %}
+                            <tr>
+                                <td>{{ account.account_name }}</td>
+                                <td>{{ account.get_account_type_display }}</td>
+                                <td>{{ account.provider|default:"N/A" }}</td>
+                                <td>${{ account.current_balance|floatformat:2 }}</td>
+                                <td>
+                                    <a href="{% url 'retirement:account_detail' account.id %}"
+                                        class="btn btn-sm btn-outline-primary">View</a>
+                                </td>
+                            </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+                {% else %}
+                <p>No retirement accounts yet. <a href="{% url 'retirement:add_account' %}">Add your first account</a>.
+                </p>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+
+    <div class="col-md-4">
+        {% if retirement_goal %}
+        <div class="card">
+            <div class="card-header">
+                <h5>Retirement Goal Progress</h5>
+            </div>
+            <div class="card-body">
+                <div class="mb-3">
+                    <strong>Target Age:</strong> {{ retirement_goal.target_retirement_age }}
+                </div>
+                <div class="mb-3">
+                    <strong>Years to Retirement:</strong> {{ retirement_goal.years_to_retirement }}
+                </div>
+                <div class="mb-3">
+                    <strong>Monthly Savings Needed:</strong> ${{ retirement_goal.monthly_savings_needed|floatformat:2 }}
+                </div>
+                <div class="progress mb-3">
+                    <div class="progress-bar" role="progressbar"
+                        style="width: {{ retirement_goal.retirement_readiness_percentage }}%"
+                        aria-valuenow="{{ retirement_goal.retirement_readiness_percentage }}" aria-valuemin="0"
+                        aria-valuemax="100">
+                        {{ retirement_goal.retirement_readiness_percentage|floatformat:1 }}%
+                    </div>
+                </div>
+                <a href="{% url 'retirement:planning' %}" class="btn btn-outline-primary btn-sm">Update Goal</a>
+            </div>
+        </div>
+        {% else %}
+        <div class="card">
+            <div class="card-header">
+                <h5>Set Your Retirement Goal</h5>
+            </div>
+            <div class="card-body">
+                <p>Set up your retirement planning goals to track your progress.</p>
+                <a href="{% url 'retirement:planning' %}" class="btn btn-primary">Set Retirement Goal</a>
+            </div>
+        </div>
+        {% endif %}
+
+        <div class="card mt-3">
+            <div class="card-header">
+                <h5>Recent Contributions</h5>
+            </div>
+            <div class="card-body">
+                {% if recent_contributions %}
+                {% for contribution in recent_contributions %}
+                <div class="d-flex justify-content-between align-items-center mb-2">
+                    <div>
+                        <strong>{{ contribution.get_contribution_type_display }}</strong><br>
+                        <small>{{ contribution.account.account_name }}</small>
+                    </div>
+                    <div class="text-end">
+                        <strong>${{ contribution.amount|floatformat:2 }}</strong><br>
+                        <small class="text-muted">{{ contribution.contribution_date }}</small>
+                    </div>
+                </div>
+                <hr>
+                {% endfor %}
+                {% else %}
+                <p>No recent contributions.</p>
+                {% endif %}
+            </div>
+        </div>
+
+        <div class="card mt-3">
+            <div class="card-header">
+                <h5>Quick Actions</h5>
+            </div>
+            <div class="card-body">
+                <a href="{% url 'retirement:add_account' %}" class="btn btn-primary btn-block mb-2">Add Account</a>
+                <a href="{% url 'retirement:planning' %}" class="btn btn-outline-primary btn-block mb-2">Retirement
+                    Planning</a>
+                <a href="{% url 'retirement:calculator' %}" class="btn btn-outline-secondary btn-block">Calculator</a>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

@@ -7,17 +7,8 @@ FROM python:3.12-slim
 ENV PYTHONDONTWRITEBYTECODE 1
 ENV PYTHONUNBUFFERED 1
 
-# Create a non-root user to run the application
-RUN adduser -D -u 1000 appuser
-
-# Switch to that user
-USER appuser
-
 # Set the working directory in the container
 WORKDIR /app
-
-# --- ADDED STEP: Upgrade pip to the latest version ---
-RUN python -m pip install --upgrade pip
 
 # Copy the requirements file and install dependencies
 COPY requirements.txt .
@@ -25,3 +16,12 @@ RUN pip install -r requirements.txt
 
 # Copy the rest of the project files into the container
 COPY . .
+
+# Create a non-root user to run the application
+RUN adduser --disabled-password --gecos '' --uid 1000 appuser
+
+# Change ownership of the app directory to appuser
+RUN chown -R appuser:appuser /app
+
+# Switch to that user
+USER appuser

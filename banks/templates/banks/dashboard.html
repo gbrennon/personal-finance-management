@@ -1,0 +1,136 @@
+{% extends 'finance/base.html' %}
+
+{% block title %}Banks Dashboard{% endblock %}
+
+{% block content %}
+<div class="row">
+    <div class="col-12">
+        <h2>Banks Dashboard</h2>
+    </div>
+</div>
+
+<div class="row mb-4">
+    <div class="col-md-3">
+        <div class="card bg-primary text-white">
+            <div class="card-body">
+                <h5 class="card-title">Checking</h5>
+                <h3>${{ checking_total|floatformat:2 }}</h3>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-3">
+        <div class="card bg-success text-white">
+            <div class="card-body">
+                <h5 class="card-title">Savings</h5>
+                <h3>${{ savings_total|floatformat:2 }}</h3>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-3">
+        <div class="card bg-warning text-white">
+            <div class="card-body">
+                <h5 class="card-title">Credit</h5>
+                <h3>${{ credit_total|floatformat:2 }}</h3>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-3">
+        <div class="card bg-info text-white">
+            <div class="card-body">
+                <h5 class="card-title">Total Accounts</h5>
+                <h3>{{ accounts.count }}</h3>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-md-8">
+        <div class="card">
+            <div class="card-header d-flex justify-content-between align-items-center">
+                <h5>Your Bank Accounts</h5>
+                <a href="{% url 'banks:add_account' %}" class="btn btn-primary btn-sm">Add Account</a>
+            </div>
+            <div class="card-body">
+                {% if accounts %}
+                <div class="table-responsive">
+                    <table class="table table-striped">
+                        <thead>
+                            <tr>
+                                <th>Account Name</th>
+                                <th>Institution</th>
+                                <th>Type</th>
+                                <th>Balance</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for account in accounts %}
+                            <tr>
+                                <td>{{ account.account_name }}</td>
+                                <td>{{ account.institution.name }}</td>
+                                <td>{{ account.get_account_type_display }}</td>
+                                <td
+                                    class="{% if account.current_balance < 0 %}text-danger{% else %}text-success{% endif %}">
+                                    ${{ account.current_balance|floatformat:2 }}
+                                </td>
+                                <td>
+                                    <a href="{% url 'banks:account_detail' account.id %}"
+                                        class="btn btn-sm btn-outline-primary">View</a>
+                                </td>
+                            </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+                {% else %}
+                <p>No bank accounts yet. <a href="{% url 'banks:add_account' %}">Add your first account</a>.</p>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+
+    <div class="col-md-4">
+        <div class="card">
+            <div class="card-header">
+                <h5>Recent Transactions</h5>
+            </div>
+            <div class="card-body">
+                {% if recent_transactions %}
+                {% for transaction in recent_transactions %}
+                <div class="d-flex justify-content-between align-items-center mb-2">
+                    <div>
+                        <strong>{{ transaction.get_transaction_type_display }}</strong><br>
+                        <small>{{ transaction.account.account_name }} - {{ transaction.description|truncatechars:30
+                            }}</small>
+                    </div>
+                    <div class="text-end">
+                        <strong class="{% if transaction.amount < 0 %}text-danger{% else %}text-success{% endif %}">
+                            ${{ transaction.amount|floatformat:2 }}
+                        </strong><br>
+                        <small class="text-muted">{{ transaction.transaction_date }}</small>
+                    </div>
+                </div>
+                <hr>
+                {% endfor %}
+                {% else %}
+                <p>No recent transactions.</p>
+                {% endif %}
+            </div>
+        </div>
+
+        <div class="card mt-3">
+            <div class="card-header">
+                <h5>Quick Actions</h5>
+            </div>
+            <div class="card-body">
+                <a href="{% url 'banks:add_account' %}" class="btn btn-primary btn-block mb-2">Add Account</a>
+                <a href="{% url 'banks:transfer' %}" class="btn btn-outline-primary btn-block mb-2">Transfer Money</a>
+                <a href="{% url 'banks:transactions_list' %}" class="btn btn-outline-secondary btn-block mb-2">View
+                    Transactions</a>
+                <a href="{% url 'banks:summary' %}" class="btn btn-outline-info btn-block">Account Summary</a>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

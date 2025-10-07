@@ -20,8 +20,11 @@ from django.contrib import admin
 from django.urls import path, include
 
 urlpatterns = [
-    path('admin/', admin.site.urls),
-    path('', include('finance.urls')),
+    path("admin/", admin.site.urls),
+    path("", include("finance.urls")),
+    path("investments/", include("investments.urls")),
+    path("retirement/", include("retirement.urls")),
+    path("banks/", include("banks.urls")),
 ]
 
 """from django.contrib import admin
