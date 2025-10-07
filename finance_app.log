@@ -1,0 +1,200 @@
+INFO 2025-10-07 22:42:49,042 conn 1 140007302196096 <BrokerConnection node_id=bootstrap-0 host=kafka:29092 <connecting> [IPv4 ('172.18.0.5', 29092)]>: connecting to kafka:29092 [('172.18.0.5', 29092) IPv4]
+INFO 2025-10-07 22:42:49,043 conn 1 140007302196096 Probing node bootstrap-0 broker version
+INFO 2025-10-07 22:42:49,043 conn 1 140007302196096 <BrokerConnection node_id=bootstrap-0 host=kafka:29092 <connecting> [IPv4 ('172.18.0.5', 29092)]>: Connection complete.
+INFO 2025-10-07 22:42:49,145 conn 1 140007302196096 Broker version identified as 2.5.0
+INFO 2025-10-07 22:42:49,145 conn 1 140007302196096 Set configuration api_version=(2, 5, 0) to skip auto check_version requests on startup
+INFO 2025-10-07 22:42:49,147 message_bus 1 140007302196096 Kafka MessageBus started successfully
+INFO 2025-10-07 22:42:49,148 conn 1 140007302196096 <BrokerConnection node_id=bootstrap-0 host=kafka:29092 <connecting> [IPv4 ('172.18.0.5', 29092)]>: connecting to kafka:29092 [('172.18.0.5', 29092) IPv4]
+INFO 2025-10-07 22:42:49,149 conn 1 140007302196096 Probing node bootstrap-0 broker version
+INFO 2025-10-07 22:42:49,149 conn 1 140007302196096 <BrokerConnection node_id=bootstrap-0 host=kafka:29092 <connecting> [IPv4 ('172.18.0.5', 29092)]>: Connection complete.
+INFO 2025-10-07 22:42:49,251 conn 1 140007302196096 Broker version identified as 2.5.0
+INFO 2025-10-07 22:42:49,251 conn 1 140007302196096 Set configuration api_version=(2, 5, 0) to skip auto check_version requests on startup
+INFO 2025-10-07 22:42:49,252 subscription_state 1 140007302196096 Updating subscribed topics to: ('events.transaction_created',)
+INFO 2025-10-07 22:42:49,252 message_bus 1 140006040315584 Started consuming messages from topic events.transaction_created
+INFO 2025-10-07 22:42:49,252 message_bus 1 140007302196096 Subscribed to topic events.transaction_created
+INFO 2025-10-07 22:42:49,253 conn 1 140007302196096 <BrokerConnection node_id=bootstrap-0 host=kafka:29092 <connecting> [IPv4 ('172.18.0.5', 29092)]>: connecting to kafka:29092 [('172.18.0.5', 29092) IPv4]
+INFO 2025-10-07 22:42:49,253 conn 1 140007302196096 Probing node bootstrap-0 broker version
+INFO 2025-10-07 22:42:49,254 conn 1 140007302196096 <BrokerConnection node_id=bootstrap-0 host=kafka:29092 <connecting> [IPv4 ('172.18.0.5', 29092)]>: Connection complete.
+INFO 2025-10-07 22:42:49,355 conn 1 140007302196096 Broker version identified as 2.5.0
+INFO 2025-10-07 22:42:49,355 conn 1 140007302196096 Set configuration api_version=(2, 5, 0) to skip auto check_version requests on startup
+INFO 2025-10-07 22:42:49,356 subscription_state 1 140007302196096 Updating subscribed topics to: ('events.budget_exceeded',)
+INFO 2025-10-07 22:42:49,357 message_bus 1 140006031922880 Started consuming messages from topic events.budget_exceeded
+INFO 2025-10-07 22:42:49,357 message_bus 1 140007302196096 Subscribed to topic events.budget_exceeded
+INFO 2025-10-07 22:42:49,358 conn 1 140007302196096 <BrokerConnection node_id=bootstrap-0 host=kafka:29092 <connecting> [IPv4 ('172.18.0.5', 29092)]>: connecting to kafka:29092 [('172.18.0.5', 29092) IPv4]
+INFO 2025-10-07 22:42:49,359 conn 1 140007302196096 Probing node bootstrap-0 broker version
+INFO 2025-10-07 22:42:49,359 conn 1 140007302196096 <BrokerConnection node_id=bootstrap-0 host=kafka:29092 <connecting> [IPv4 ('172.18.0.5', 29092)]>: Connection complete.
+INFO 2025-10-07 22:42:49,461 conn 1 140007302196096 Broker version identified as 2.5.0
+INFO 2025-10-07 22:42:49,461 conn 1 140007302196096 Set configuration api_version=(2, 5, 0) to skip auto check_version requests on startup
+INFO 2025-10-07 22:42:49,462 subscription_state 1 140007302196096 Updating subscribed topics to: ('commands.create_transaction',)
+INFO 2025-10-07 22:42:49,462 message_bus 1 140006022481600 Started consuming messages from topic commands.create_transaction
+INFO 2025-10-07 22:42:49,462 message_bus 1 140007302196096 Subscribed to topic commands.create_transaction
+INFO 2025-10-07 22:42:49,465 conn 1 140007302196096 <BrokerConnection node_id=bootstrap-0 host=kafka:29092 <connecting> [IPv4 ('172.18.0.5', 29092)]>: connecting to kafka:29092 [('172.18.0.5', 29092) IPv4]
+INFO 2025-10-07 22:42:49,466 conn 1 140007302196096 Probing node bootstrap-0 broker version
+INFO 2025-10-07 22:42:49,467 conn 1 140007302196096 <BrokerConnection node_id=bootstrap-0 host=kafka:29092 <connecting> [IPv4 ('172.18.0.5', 29092)]>: Connection complete.
+INFO 2025-10-07 22:42:49,569 conn 1 140007302196096 Broker version identified as 2.5.0
+INFO 2025-10-07 22:42:49,569 conn 1 140007302196096 Set configuration api_version=(2, 5, 0) to skip auto check_version requests on startup
+INFO 2025-10-07 22:42:49,570 subscription_state 1 140007302196096 Updating subscribed topics to: ('commands.create_invoice',)
+INFO 2025-10-07 22:42:49,571 message_bus 1 140006014088896 Started consuming messages from topic commands.create_invoice
+INFO 2025-10-07 22:42:49,571 message_bus 1 140007302196096 Subscribed to topic commands.create_invoice
+INFO 2025-10-07 22:42:49,573 conn 1 140007302196096 <BrokerConnection node_id=bootstrap-0 host=kafka:29092 <connecting> [IPv4 ('172.18.0.5', 29092)]>: connecting to kafka:29092 [('172.18.0.5', 29092) IPv4]
+INFO 2025-10-07 22:42:49,573 conn 1 140007302196096 Probing node bootstrap-0 broker version
+INFO 2025-10-07 22:42:49,574 conn 1 140007302196096 <BrokerConnection node_id=bootstrap-0 host=kafka:29092 <connecting> [IPv4 ('172.18.0.5', 29092)]>: Connection complete.
+INFO 2025-10-07 22:42:49,676 conn 1 140007302196096 Broker version identified as 2.5.0
+INFO 2025-10-07 22:42:49,676 conn 1 140007302196096 Set configuration api_version=(2, 5, 0) to skip auto check_version requests on startup
+INFO 2025-10-07 22:42:49,676 subscription_state 1 140007302196096 Updating subscribed topics to: ('commands.create_investment',)
+INFO 2025-10-07 22:42:49,677 message_bus 1 140005666191040 Started consuming messages from topic commands.create_investment
+INFO 2025-10-07 22:42:49,678 message_bus 1 140007302196096 Subscribed to topic commands.create_investment
+INFO 2025-10-07 22:42:49,679 conn 1 140007302196096 <BrokerConnection node_id=bootstrap-0 host=kafka:29092 <connecting> [IPv4 ('172.18.0.5', 29092)]>: connecting to kafka:29092 [('172.18.0.5', 29092) IPv4]
+INFO 2025-10-07 22:42:49,679 conn 1 140007302196096 Probing node bootstrap-0 broker version
+INFO 2025-10-07 22:42:49,680 conn 1 140007302196096 <BrokerConnection node_id=bootstrap-0 host=kafka:29092 <connecting> [IPv4 ('172.18.0.5', 29092)]>: Connection complete.
+INFO 2025-10-07 22:42:49,781 conn 1 140007302196096 Broker version identified as 2.5.0
+INFO 2025-10-07 22:42:49,782 conn 1 140007302196096 Set configuration api_version=(2, 5, 0) to skip auto check_version requests on startup
+INFO 2025-10-07 22:42:49,783 subscription_state 1 140007302196096 Updating subscribed topics to: ('commands.create_retirement_plan',)
+INFO 2025-10-07 22:42:49,784 message_bus 1 140005657798336 Started consuming messages from topic commands.create_retirement_plan
+INFO 2025-10-07 22:42:49,785 message_bus 1 140007302196096 Subscribed to topic commands.create_retirement_plan
+INFO 2025-10-07 22:42:49,787 conn 1 140007302196096 <BrokerConnection node_id=bootstrap-0 host=kafka:29092 <connecting> [IPv4 ('172.18.0.5', 29092)]>: connecting to kafka:29092 [('172.18.0.5', 29092) IPv4]
+INFO 2025-10-07 22:42:49,787 conn 1 140007302196096 Probing node bootstrap-0 broker version
+INFO 2025-10-07 22:42:49,788 conn 1 140007302196096 <BrokerConnection node_id=bootstrap-0 host=kafka:29092 <connecting> [IPv4 ('172.18.0.5', 29092)]>: Connection complete.
+INFO 2025-10-07 22:42:49,889 conn 1 140007302196096 Broker version identified as 2.5.0
+INFO 2025-10-07 22:42:49,889 conn 1 140007302196096 Set configuration api_version=(2, 5, 0) to skip auto check_version requests on startup
+INFO 2025-10-07 22:42:49,891 subscription_state 1 140007302196096 Updating subscribed topics to: ('commands.generate_forecast',)
+INFO 2025-10-07 22:42:49,892 message_bus 1 140005649405632 Started consuming messages from topic commands.generate_forecast
+INFO 2025-10-07 22:42:49,892 message_bus 1 140007302196096 Subscribed to topic commands.generate_forecast
+INFO 2025-10-07 22:42:49,892 message_dispatcher_integration 1 140007302196096 MessageBus integration started
+INFO 2025-10-07 22:42:49,995 cluster 1 140005657798336 Group coordinator for finance_app_commands.create_retirement_plan is BrokerMetadata(nodeId='coordinator-1', host='kafka', port=29092, rack=None)
+INFO 2025-10-07 22:42:49,995 cluster 1 140006031922880 Group coordinator for finance_app_events.budget_exceeded is BrokerMetadata(nodeId='coordinator-1', host='kafka', port=29092, rack=None)
+INFO 2025-10-07 22:42:49,995 base 1 140005657798336 Discovered coordinator coordinator-1 for group finance_app_commands.create_retirement_plan
+INFO 2025-10-07 22:42:49,995 base 1 140006031922880 Discovered coordinator coordinator-1 for group finance_app_events.budget_exceeded
+INFO 2025-10-07 22:42:49,996 base 1 140006031922880 Starting new heartbeat thread
+INFO 2025-10-07 22:42:49,995 base 1 140005657798336 Starting new heartbeat thread
+INFO 2025-10-07 22:42:49,996 consumer 1 140006031922880 Revoking previously assigned partitions set() for group finance_app_events.budget_exceeded
+INFO 2025-10-07 22:42:49,997 cluster 1 140006022481600 Group coordinator for finance_app_commands.create_transaction is BrokerMetadata(nodeId='coordinator-1', host='kafka', port=29092, rack=None)
+INFO 2025-10-07 22:42:49,997 cluster 1 140005666191040 Group coordinator for finance_app_commands.create_investment is BrokerMetadata(nodeId='coordinator-1', host='kafka', port=29092, rack=None)
+INFO 2025-10-07 22:42:49,998 cluster 1 140005649405632 Group coordinator for finance_app_commands.generate_forecast is BrokerMetadata(nodeId='coordinator-1', host='kafka', port=29092, rack=None)
+INFO 2025-10-07 22:42:49,998 cluster 1 140006014088896 Group coordinator for finance_app_commands.create_invoice is BrokerMetadata(nodeId='coordinator-1', host='kafka', port=29092, rack=None)
+INFO 2025-10-07 22:42:49,999 base 1 140005666191040 Discovered coordinator coordinator-1 for group finance_app_commands.create_investment
+INFO 2025-10-07 22:42:49,999 base 1 140005666191040 Starting new heartbeat thread
+INFO 2025-10-07 22:42:49,999 base 1 140005649405632 Discovered coordinator coordinator-1 for group finance_app_commands.generate_forecast
+INFO 2025-10-07 22:42:49,998 consumer 1 140005657798336 Revoking previously assigned partitions set() for group finance_app_commands.create_retirement_plan
+INFO 2025-10-07 22:42:49,999 base 1 140006022481600 Discovered coordinator coordinator-1 for group finance_app_commands.create_transaction
+INFO 2025-10-07 22:42:49,998 conn 1 140006031922880 <BrokerConnection node_id=coordinator-1 host=kafka:29092 <connecting> [IPv4 ('172.18.0.5', 29092)]>: connecting to kafka:29092 [('172.18.0.5', 29092) IPv4]
+INFO 2025-10-07 22:42:49,999 base 1 140006014088896 Discovered coordinator coordinator-1 for group finance_app_commands.create_invoice
+INFO 2025-10-07 22:42:50,001 base 1 140005649405632 Starting new heartbeat thread
+INFO 2025-10-07 22:42:50,000 consumer 1 140005666191040 Revoking previously assigned partitions set() for group finance_app_commands.create_investment
+INFO 2025-10-07 22:42:50,001 base 1 140006014088896 Starting new heartbeat thread
+INFO 2025-10-07 22:42:50,002 base 1 140006022481600 Starting new heartbeat thread
+INFO 2025-10-07 22:42:50,002 conn 1 140005657798336 <BrokerConnection node_id=coordinator-1 host=kafka:29092 <connecting> [IPv4 ('172.18.0.5', 29092)]>: connecting to kafka:29092 [('172.18.0.5', 29092) IPv4]
+INFO 2025-10-07 22:42:50,003 conn 1 140006031922880 <BrokerConnection node_id=coordinator-1 host=kafka:29092 <connecting> [IPv4 ('172.18.0.5', 29092)]>: Connection complete.
+INFO 2025-10-07 22:42:50,003 consumer 1 140005649405632 Revoking previously assigned partitions set() for group finance_app_commands.generate_forecast
+INFO 2025-10-07 22:42:50,003 consumer 1 140006014088896 Revoking previously assigned partitions set() for group finance_app_commands.create_invoice
+INFO 2025-10-07 22:42:50,003 conn 1 140005666191040 <BrokerConnection node_id=coordinator-1 host=kafka:29092 <connecting> [IPv4 ('172.18.0.5', 29092)]>: connecting to kafka:29092 [('172.18.0.5', 29092) IPv4]
+INFO 2025-10-07 22:42:50,005 conn 1 140005666191040 <BrokerConnection node_id=coordinator-1 host=kafka:29092 <connecting> [IPv4 ('172.18.0.5', 29092)]>: Connection complete.
+INFO 2025-10-07 22:42:50,004 conn 1 140006031922880 <BrokerConnection node_id=bootstrap-0 host=kafka:29092 <connected> [IPv4 ('172.18.0.5', 29092)]>: Closing connection. 
+INFO 2025-10-07 22:42:50,004 consumer 1 140006022481600 Revoking previously assigned partitions set() for group finance_app_commands.create_transaction
+INFO 2025-10-07 22:42:50,005 conn 1 140005657798336 <BrokerConnection node_id=coordinator-1 host=kafka:29092 <connecting> [IPv4 ('172.18.0.5', 29092)]>: Connection complete.
+INFO 2025-10-07 22:42:50,005 conn 1 140006014088896 <BrokerConnection node_id=coordinator-1 host=kafka:29092 <connecting> [IPv4 ('172.18.0.5', 29092)]>: connecting to kafka:29092 [('172.18.0.5', 29092) IPv4]
+INFO 2025-10-07 22:42:50,005 conn 1 140005666191040 <BrokerConnection node_id=bootstrap-0 host=kafka:29092 <connected> [IPv4 ('172.18.0.5', 29092)]>: Closing connection. 
+INFO 2025-10-07 22:42:50,006 conn 1 140005649405632 <BrokerConnection node_id=coordinator-1 host=kafka:29092 <connecting> [IPv4 ('172.18.0.5', 29092)]>: connecting to kafka:29092 [('172.18.0.5', 29092) IPv4]
+INFO 2025-10-07 22:42:50,007 conn 1 140006022481600 <BrokerConnection node_id=coordinator-1 host=kafka:29092 <connecting> [IPv4 ('172.18.0.5', 29092)]>: connecting to kafka:29092 [('172.18.0.5', 29092) IPv4]
+INFO 2025-10-07 22:42:50,006 conn 1 140005657798336 <BrokerConnection node_id=bootstrap-0 host=kafka:29092 <connected> [IPv4 ('172.18.0.5', 29092)]>: Closing connection. 
+INFO 2025-10-07 22:42:50,007 conn 1 140005649405632 <BrokerConnection node_id=coordinator-1 host=kafka:29092 <connecting> [IPv4 ('172.18.0.5', 29092)]>: Connection complete.
+INFO 2025-10-07 22:42:50,007 conn 1 140006014088896 <BrokerConnection node_id=coordinator-1 host=kafka:29092 <connecting> [IPv4 ('172.18.0.5', 29092)]>: Connection complete.
+INFO 2025-10-07 22:42:50,008 conn 1 140006014088896 <BrokerConnection node_id=bootstrap-0 host=kafka:29092 <connected> [IPv4 ('172.18.0.5', 29092)]>: Closing connection. 
+INFO 2025-10-07 22:42:50,008 conn 1 140005649405632 <BrokerConnection node_id=bootstrap-0 host=kafka:29092 <connected> [IPv4 ('172.18.0.5', 29092)]>: Closing connection. 
+INFO 2025-10-07 22:42:50,008 conn 1 140006022481600 <BrokerConnection node_id=coordinator-1 host=kafka:29092 <connecting> [IPv4 ('172.18.0.5', 29092)]>: Connection complete.
+INFO 2025-10-07 22:42:50,009 conn 1 140006022481600 <BrokerConnection node_id=bootstrap-0 host=kafka:29092 <connected> [IPv4 ('172.18.0.5', 29092)]>: Closing connection. 
+INFO 2025-10-07 22:42:50,018 cluster 1 140006040315584 Group coordinator for finance_app_events.transaction_created is BrokerMetadata(nodeId='coordinator-1', host='kafka', port=29092, rack=None)
+INFO 2025-10-07 22:42:50,018 base 1 140006040315584 Discovered coordinator coordinator-1 for group finance_app_events.transaction_created
+INFO 2025-10-07 22:42:50,018 base 1 140006040315584 Starting new heartbeat thread
+INFO 2025-10-07 22:42:50,018 consumer 1 140006040315584 Revoking previously assigned partitions set() for group finance_app_events.transaction_created
+INFO 2025-10-07 22:42:50,019 conn 1 140006040315584 <BrokerConnection node_id=coordinator-1 host=kafka:29092 <connecting> [IPv4 ('172.18.0.5', 29092)]>: connecting to kafka:29092 [('172.18.0.5', 29092) IPv4]
+INFO 2025-10-07 22:42:50,019 conn 1 140006040315584 <BrokerConnection node_id=coordinator-1 host=kafka:29092 <connecting> [IPv4 ('172.18.0.5', 29092)]>: Connection complete.
+INFO 2025-10-07 22:42:50,019 conn 1 140006040315584 <BrokerConnection node_id=bootstrap-0 host=kafka:29092 <connected> [IPv4 ('172.18.0.5', 29092)]>: Closing connection. 
+INFO 2025-10-07 22:42:50,106 base 1 140006031922880 (Re-)joining group finance_app_events.budget_exceeded
+INFO 2025-10-07 22:42:50,107 base 1 140005666191040 (Re-)joining group finance_app_commands.create_investment
+INFO 2025-10-07 22:42:50,108 conn 1 140005666191040 <BrokerConnection node_id=bootstrap-0 host=kafka:29092 <connecting> [IPv4 ('172.18.0.5', 29092)]>: connecting to kafka:29092 [('172.18.0.5', 29092) IPv4]
+INFO 2025-10-07 22:42:50,108 base 1 140005657798336 (Re-)joining group finance_app_commands.create_retirement_plan
+INFO 2025-10-07 22:42:50,108 conn 1 140005666191040 <BrokerConnection node_id=bootstrap-0 host=kafka:29092 <connecting> [IPv4 ('172.18.0.5', 29092)]>: Connection complete.
+INFO 2025-10-07 22:42:50,108 base 1 140006014088896 (Re-)joining group finance_app_commands.create_invoice
+INFO 2025-10-07 22:42:50,109 base 1 140005649405632 (Re-)joining group finance_app_commands.generate_forecast
+INFO 2025-10-07 22:42:50,109 base 1 140006022481600 (Re-)joining group finance_app_commands.create_transaction
+INFO 2025-10-07 22:42:50,109 conn 1 140005657798336 <BrokerConnection node_id=bootstrap-0 host=kafka:29092 <connecting> [IPv4 ('172.18.0.5', 29092)]>: connecting to kafka:29092 [('172.18.0.5', 29092) IPv4]
+INFO 2025-10-07 22:42:50,111 conn 1 140005657798336 <BrokerConnection node_id=bootstrap-0 host=kafka:29092 <connecting> [IPv4 ('172.18.0.5', 29092)]>: Connection complete.
+INFO 2025-10-07 22:42:50,111 conn 1 140006014088896 <BrokerConnection node_id=bootstrap-0 host=kafka:29092 <connecting> [IPv4 ('172.18.0.5', 29092)]>: connecting to kafka:29092 [('172.18.0.5', 29092) IPv4]
+INFO 2025-10-07 22:42:50,111 conn 1 140005649405632 <BrokerConnection node_id=bootstrap-0 host=kafka:29092 <connecting> [IPv4 ('172.18.0.5', 29092)]>: connecting to kafka:29092 [('172.18.0.5', 29092) IPv4]
+INFO 2025-10-07 22:42:50,111 conn 1 140006022481600 <BrokerConnection node_id=bootstrap-0 host=kafka:29092 <connecting> [IPv4 ('172.18.0.5', 29092)]>: connecting to kafka:29092 [('172.18.0.5', 29092) IPv4]
+INFO 2025-10-07 22:42:50,112 conn 1 140006014088896 <BrokerConnection node_id=bootstrap-0 host=kafka:29092 <connecting> [IPv4 ('172.18.0.5', 29092)]>: Connection complete.
+INFO 2025-10-07 22:42:50,112 conn 1 140005649405632 <BrokerConnection node_id=bootstrap-0 host=kafka:29092 <connecting> [IPv4 ('172.18.0.5', 29092)]>: Connection complete.
+INFO 2025-10-07 22:42:50,112 conn 1 140006022481600 <BrokerConnection node_id=bootstrap-0 host=kafka:29092 <connecting> [IPv4 ('172.18.0.5', 29092)]>: Connection complete.
+INFO 2025-10-07 22:42:50,120 base 1 140006040315584 (Re-)joining group finance_app_events.transaction_created
+INFO 2025-10-07 22:42:50,121 conn 1 140006040315584 <BrokerConnection node_id=bootstrap-0 host=kafka:29092 <connecting> [IPv4 ('172.18.0.5', 29092)]>: connecting to kafka:29092 [('172.18.0.5', 29092) IPv4]
+INFO 2025-10-07 22:42:50,121 conn 1 140006040315584 <BrokerConnection node_id=bootstrap-0 host=kafka:29092 <connecting> [IPv4 ('172.18.0.5', 29092)]>: Connection complete.
+INFO 2025-10-07 22:42:50,142 base 1 140006040315584 Elected group leader -- performing partition assignments using range
+INFO 2025-10-07 22:42:50,144 base 1 140006031922880 Elected group leader -- performing partition assignments using range
+INFO 2025-10-07 22:42:50,145 conn 1 140006031922880 <BrokerConnection node_id=1 host=kafka:29092 <connecting> [IPv4 ('172.18.0.5', 29092)]>: connecting to kafka:29092 [('172.18.0.5', 29092) IPv4]
+INFO 2025-10-07 22:42:50,146 conn 1 140006031922880 <BrokerConnection node_id=1 host=kafka:29092 <connecting> [IPv4 ('172.18.0.5', 29092)]>: Connection complete.
+INFO 2025-10-07 22:42:50,147 base 1 140006014088896 Elected group leader -- performing partition assignments using range
+INFO 2025-10-07 22:42:50,147 base 1 140005649405632 Elected group leader -- performing partition assignments using range
+INFO 2025-10-07 22:42:50,149 base 1 140006022481600 Elected group leader -- performing partition assignments using range
+INFO 2025-10-07 22:42:50,151 base 1 140005657798336 Elected group leader -- performing partition assignments using range
+INFO 2025-10-07 22:42:50,153 base 1 140005666191040 Elected group leader -- performing partition assignments using range
+INFO 2025-10-07 22:42:50,207 base 1 140006022481600 Successfully joined group finance_app_commands.create_transaction with generation 1
+INFO 2025-10-07 22:42:50,208 base 1 140005666191040 Successfully joined group finance_app_commands.create_investment with generation 1
+INFO 2025-10-07 22:42:50,208 base 1 140006031922880 Successfully joined group finance_app_events.budget_exceeded with generation 1
+INFO 2025-10-07 22:42:50,208 subscription_state 1 140006022481600 Updated partition assignment: [TopicPartition(topic='commands.create_transaction', partition=0)]
+INFO 2025-10-07 22:42:50,208 base 1 140006040315584 Successfully joined group finance_app_events.transaction_created with generation 1
+INFO 2025-10-07 22:42:50,208 base 1 140006014088896 Successfully joined group finance_app_commands.create_invoice with generation 1
+INFO 2025-10-07 22:42:50,209 subscription_state 1 140005666191040 Updated partition assignment: [TopicPartition(topic='commands.create_investment', partition=0)]
+INFO 2025-10-07 22:42:50,209 base 1 140005657798336 Successfully joined group finance_app_commands.create_retirement_plan with generation 1
+INFO 2025-10-07 22:42:50,209 base 1 140005649405632 Successfully joined group finance_app_commands.generate_forecast with generation 1
+INFO 2025-10-07 22:42:50,209 subscription_state 1 140006031922880 Updated partition assignment: [TopicPartition(topic='events.budget_exceeded', partition=0)]
+INFO 2025-10-07 22:42:50,209 consumer 1 140006022481600 Setting newly assigned partitions {TopicPartition(topic='commands.create_transaction', partition=0)} for group finance_app_commands.create_transaction
+INFO 2025-10-07 22:42:50,209 subscription_state 1 140006040315584 Updated partition assignment: [TopicPartition(topic='events.transaction_created', partition=0)]
+INFO 2025-10-07 22:42:50,210 subscription_state 1 140006014088896 Updated partition assignment: [TopicPartition(topic='commands.create_invoice', partition=0)]
+INFO 2025-10-07 22:42:50,210 consumer 1 140005666191040 Setting newly assigned partitions {TopicPartition(topic='commands.create_investment', partition=0)} for group finance_app_commands.create_investment
+INFO 2025-10-07 22:42:50,210 subscription_state 1 140005657798336 Updated partition assignment: [TopicPartition(topic='commands.create_retirement_plan', partition=0)]
+INFO 2025-10-07 22:42:50,210 subscription_state 1 140005649405632 Updated partition assignment: [TopicPartition(topic='commands.generate_forecast', partition=0)]
+INFO 2025-10-07 22:42:50,210 consumer 1 140006031922880 Setting newly assigned partitions {TopicPartition(topic='events.budget_exceeded', partition=0)} for group finance_app_events.budget_exceeded
+INFO 2025-10-07 22:42:50,210 consumer 1 140006040315584 Setting newly assigned partitions {TopicPartition(topic='events.transaction_created', partition=0)} for group finance_app_events.transaction_created
+INFO 2025-10-07 22:42:50,211 consumer 1 140006014088896 Setting newly assigned partitions {TopicPartition(topic='commands.create_invoice', partition=0)} for group finance_app_commands.create_invoice
+INFO 2025-10-07 22:42:50,211 consumer 1 140005657798336 Setting newly assigned partitions {TopicPartition(topic='commands.create_retirement_plan', partition=0)} for group finance_app_commands.create_retirement_plan
+INFO 2025-10-07 22:42:50,211 consumer 1 140005649405632 Setting newly assigned partitions {TopicPartition(topic='commands.generate_forecast', partition=0)} for group finance_app_commands.generate_forecast
+INFO 2025-10-07 22:42:50,212 conn 1 140005666191040 <BrokerConnection node_id=1 host=kafka:29092 <connecting> [IPv4 ('172.18.0.5', 29092)]>: connecting to kafka:29092 [('172.18.0.5', 29092) IPv4]
+INFO 2025-10-07 22:42:50,214 conn 1 140005666191040 <BrokerConnection node_id=1 host=kafka:29092 <connecting> [IPv4 ('172.18.0.5', 29092)]>: Connection complete.
+INFO 2025-10-07 22:42:50,214 conn 1 140005657798336 <BrokerConnection node_id=1 host=kafka:29092 <connecting> [IPv4 ('172.18.0.5', 29092)]>: connecting to kafka:29092 [('172.18.0.5', 29092) IPv4]
+INFO 2025-10-07 22:42:50,215 conn 1 140005666191040 <BrokerConnection node_id=bootstrap-0 host=kafka:29092 <connected> [IPv4 ('172.18.0.5', 29092)]>: Closing connection. 
+INFO 2025-10-07 22:42:50,215 conn 1 140005657798336 <BrokerConnection node_id=1 host=kafka:29092 <connecting> [IPv4 ('172.18.0.5', 29092)]>: Connection complete.
+INFO 2025-10-07 22:42:50,215 conn 1 140005657798336 <BrokerConnection node_id=bootstrap-0 host=kafka:29092 <connected> [IPv4 ('172.18.0.5', 29092)]>: Closing connection. 
+INFO 2025-10-07 22:42:50,218 conn 1 140006040315584 <BrokerConnection node_id=1 host=kafka:29092 <connecting> [IPv4 ('172.18.0.5', 29092)]>: connecting to kafka:29092 [('172.18.0.5', 29092) IPv4]
+INFO 2025-10-07 22:42:50,218 conn 1 140006014088896 <BrokerConnection node_id=1 host=kafka:29092 <connecting> [IPv4 ('172.18.0.5', 29092)]>: connecting to kafka:29092 [('172.18.0.5', 29092) IPv4]
+INFO 2025-10-07 22:42:50,219 conn 1 140006040315584 <BrokerConnection node_id=1 host=kafka:29092 <connecting> [IPv4 ('172.18.0.5', 29092)]>: Connection complete.
+INFO 2025-10-07 22:42:50,219 conn 1 140006014088896 <BrokerConnection node_id=1 host=kafka:29092 <connecting> [IPv4 ('172.18.0.5', 29092)]>: Connection complete.
+INFO 2025-10-07 22:42:50,219 conn 1 140006040315584 <BrokerConnection node_id=bootstrap-0 host=kafka:29092 <connected> [IPv4 ('172.18.0.5', 29092)]>: Closing connection. 
+INFO 2025-10-07 22:42:50,219 conn 1 140006014088896 <BrokerConnection node_id=bootstrap-0 host=kafka:29092 <connected> [IPv4 ('172.18.0.5', 29092)]>: Closing connection. 
+INFO 2025-10-07 22:42:50,221 conn 1 140005649405632 <BrokerConnection node_id=1 host=kafka:29092 <connecting> [IPv4 ('172.18.0.5', 29092)]>: connecting to kafka:29092 [('172.18.0.5', 29092) IPv4]
+INFO 2025-10-07 22:42:50,222 conn 1 140006022481600 <BrokerConnection node_id=1 host=kafka:29092 <connecting> [IPv4 ('172.18.0.5', 29092)]>: connecting to kafka:29092 [('172.18.0.5', 29092) IPv4]
+INFO 2025-10-07 22:42:50,222 conn 1 140005649405632 <BrokerConnection node_id=1 host=kafka:29092 <connecting> [IPv4 ('172.18.0.5', 29092)]>: Connection complete.
+INFO 2025-10-07 22:42:50,222 conn 1 140005649405632 <BrokerConnection node_id=bootstrap-0 host=kafka:29092 <connected> [IPv4 ('172.18.0.5', 29092)]>: Closing connection. 
+INFO 2025-10-07 22:42:50,223 conn 1 140006022481600 <BrokerConnection node_id=1 host=kafka:29092 <connecting> [IPv4 ('172.18.0.5', 29092)]>: Connection complete.
+INFO 2025-10-07 22:42:50,223 conn 1 140006022481600 <BrokerConnection node_id=bootstrap-0 host=kafka:29092 <connected> [IPv4 ('172.18.0.5', 29092)]>: Closing connection. 
+INFO 2025-10-07 22:42:52,087 autoreload 32 140202276068224 Watching for file changes with StatReloader
+INFO 2025-10-07 22:47:49,200 conn 1 140006048708288 <BrokerConnection node_id=1 host=kafka:29092 <connecting> [IPv4 ('172.18.0.5', 29092)]>: connecting to kafka:29092 [('172.18.0.5', 29092) IPv4]
+INFO 2025-10-07 22:47:49,208 conn 1 140006048708288 <BrokerConnection node_id=1 host=kafka:29092 <connecting> [IPv4 ('172.18.0.5', 29092)]>: Connection complete.
+INFO 2025-10-07 22:47:49,208 conn 1 140006048708288 <BrokerConnection node_id=bootstrap-0 host=kafka:29092 <connected> [IPv4 ('172.18.0.5', 29092)]>: Closing connection. 
+INFO 2025-10-07 22:48:12,902 basehttp 32 140200945927872 "GET / HTTP/1.1" 200 1206
+INFO 2025-10-07 22:49:40,708 basehttp 32 140200945927872 "GET / HTTP/1.1" 200 1206
+INFO 2025-10-07 22:50:28,087 basehttp 32 140200945927872 "GET /login/ HTTP/1.1" 200 1738
+INFO 2025-10-07 22:50:35,113 basehttp 32 140200945927872 "POST /login/ HTTP/1.1" 302 0
+INFO 2025-10-07 22:50:35,174 basehttp 32 140200945927872 "GET /dashboard/ HTTP/1.1" 200 32445
+INFO 2025-10-07 22:50:58,725 basehttp 32 140200945927872 "GET /forecast/ HTTP/1.1" 200 3898
+INFO 2025-10-07 22:51:02,150 basehttp 32 140200945927872 "GET / HTTP/1.1" 302 0
+INFO 2025-10-07 22:51:02,213 basehttp 32 140200945927872 "GET /dashboard/ HTTP/1.1" 200 32445
+INFO 2025-10-07 22:51:05,333 basehttp 32 140200945927872 "GET /add_budget/ HTTP/1.1" 200 2353
+INFO 2025-10-07 22:51:07,438 basehttp 32 140200945927872 "GET / HTTP/1.1" 302 0
+INFO 2025-10-07 22:51:07,521 basehttp 32 140200945927872 "GET /dashboard/ HTTP/1.1" 200 32445
+INFO 2025-10-07 22:51:09,171 basehttp 32 140200945927872 "GET /report/ HTTP/1.1" 200 6326
+INFO 2025-10-07 22:51:11,936 basehttp 32 140200945927872 "GET /dashboard/ HTTP/1.1" 200 32445
+INFO 2025-10-07 22:51:14,262 basehttp 32 140200945927872 "GET /add_income/ HTTP/1.1" 200 2186
+INFO 2025-10-07 22:51:24,233 basehttp 32 140200945927872 "POST /add_income/ HTTP/1.1" 302 0
+INFO 2025-10-07 22:51:24,286 basehttp 32 140200945927872 "GET /dashboard/ HTTP/1.1" 200 32925
+INFO 2025-10-07 22:53:04,092 basehttp 32 140200945927872 "GET /dashboard/ HTTP/1.1" 200 32925

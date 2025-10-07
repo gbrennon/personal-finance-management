@@ -1,4 +1,4 @@
-# requirements.txt
+# Core Django requirements
 Django~=5.2
 django-extensions
 gunicorn
@@ -6,3 +6,16 @@ pandas
 scikit-learn
 matplotlib
 numpy
+
+# Message broker and async support
+kafka-python==2.0.2
+confluent-kafka==2.3.0
+celery==5.3.4
+redis==5.0.1
+
+# Additional dependencies for distributed system
+pydantic==2.5.0
+python-dotenv==1.0.0
+asyncio-mqtt==0.16.1
+dj-database-url==2.1.0
+psycopg2-binary==2.9.9
