@@ -1,0 +1,91 @@
+# Created by https://www.gitignore.io/api/python,django,virtualenv,jupyter,pycharm,vscode
+# Modified for clarity and completeness.
+
+# ----------------------------------------------------------------------
+# 1. Project-Specific Files and Configuration
+# ----------------------------------------------------------------------
+.vscode/        # VS Code settings, except settings.json, which may be useful
+.idea/          # JetBrains/PyCharm project files
+__pycache__/    # Python 3 compiled bytecode
+*.pyc           # Compiled Python files (Python 2/3)
+*.pyd           # Python extension modules
+*.so            # Shared object files (often C extensions)
+.env            # Environment variable files (local configuration)
+.DS_Store       # macOS file for folder view settings
+
+# ----------------------------------------------------------------------
+# 2. Virtual Environments (The most important part)
+# ----------------------------------------------------------------------
+# Standard virtual environments
+venv/
+env/
+VENV/
+ENV/
+.venv/
+.env/
+
+# Tools that create specific virtual environment names
+# Poetry
+.venv           # Poetry's default in-project virtual environment
+
+# Conda/Anaconda
+.conda/
+conda-bld/
+
+# uv/pipx/rye
+.cache/         # Caching directories (often include environments)
+uv/             # uv tool environments
+
+# ----------------------------------------------------------------------
+# 3. Build Artifacts and Distribution Files
+# ----------------------------------------------------------------------
+# Packages/Distribution files
+dist/
+build/
+*.egg-info/
+.eggs/
+
+# Wheels, archives, and compressed files
+*.whl
+*.tar.gz
+*.zip
+
+# distutils / setuptools / setup.py temporary files
+*.manifest
+.Python
+.build_log
+
+# ----------------------------------------------------------------------
+# 4. Testing, Documentation, and Temporary Files
+# ----------------------------------------------------------------------
+# Pytest cache directory
+.pytest_cache/
+
+# Sphinx documentation build output
+docs/_build/
+
+# Jupyter Notebook / IPython / R files
+.ipynb_checkpoints
+*.orig
+
+# Editor backup files
+*~
+#*#
+
+# ----------------------------------------------------------------------
+# 5. Dependency Management Lock Files (Only for specific tools)
+# ----------------------------------------------------------------------
+
+# NOTE: For most projects (requirements.txt), you want to COMMIT the lock file!
+# However, if you are using tools that generate complex lock files and ONLY
+# want to commit the source manifest (e.g., pyproject.toml), you can ignore them.
+# I'm including them here for completeness, but typically you do NOT ignore them.
+
+# # Poetry (Usually COMMIT the lock file)
+# poetry.lock
+
+# # uv / pip-compile (Usually COMMIT the lock file)
+# requirements.lock
+
+# # Pipenv (Usually COMMIT the lock file)
+# Pipfile.lock
