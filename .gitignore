@@ -26,15 +26,15 @@ ENV/
 
 # Tools that create specific virtual environment names
 # Poetry
-.venv           # Poetry's default in-project virtual environment
+.venv
 
 # Conda/Anaconda
 .conda/
 conda-bld/
 
 # uv/pipx/rye
-.cache/         # Caching directories (often include environments)
-uv/             # uv tool environments
+.cache/
+uv/
 
 # ----------------------------------------------------------------------
 # 3. Build Artifacts and Distribution Files
