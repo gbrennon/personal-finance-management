@@ -4,14 +4,14 @@
 # ----------------------------------------------------------------------
 # 1. Project-Specific Files and Configuration
 # ----------------------------------------------------------------------
-.vscode/        # VS Code settings, except settings.json, which may be useful
-.idea/          # JetBrains/PyCharm project files
-__pycache__/    # Python 3 compiled bytecode
-*.pyc           # Compiled Python files (Python 2/3)
-*.pyd           # Python extension modules
-*.so            # Shared object files (often C extensions)
-.env            # Environment variable files (local configuration)
-.DS_Store       # macOS file for folder view settings
+.vscode/
+.idea/
+__pycache__/
+*.pyc
+*.pyd
+*.so
+.env
+.DS_Store
 
 # ----------------------------------------------------------------------
 # 2. Virtual Environments (The most important part)
