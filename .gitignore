@@ -9,6 +9,7 @@
 __pycache__/
 *.pyc
 *.pyd
+*.sqlite3
 *.so
 .env
 .DS_Store
